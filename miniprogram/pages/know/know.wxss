@@ -1,0 +1,27 @@
+/* pages/know/know.wxss */
+.container{
+  width: 100%;
+  height: 100vh;
+  background-color: #fff;
+}
+.take{
+  width: 350rpx;
+  height: 80rpx;
+  /* border: 1px solid #fc7bac; */
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 100rpx;
+  background-color: #FC8180;
+  color: #fff;
+  margin-top: 100rpx;
+}
+.photo{
+  color: #FC8180;
+  margin-top: 50rpx;
+  width: 350rpx;
+  height: 80rpx;
+  border: 1px solid #FC8180;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 100rpx;
+}

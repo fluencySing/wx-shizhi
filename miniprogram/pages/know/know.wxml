@@ -1,0 +1,14 @@
+<!--pages/know/know.wxml-->
+<view class="know">
+  <view class="container">
+     <image src="https://img-qn-4.51miz.com/preview/element/00/01/17/34/E-1173498-E3F592DF.jpg!/quality/90/unsharp/true/compress/true/format/jpg/fh/320"></image>
+     <view class="take" bindtap="take">拍照识花</view>
+     <view class="photo" bindtap="photo">
+       <!-- <navigator url="../info/info"> -->
+         上传图片
+       <!-- </navigator> -->
+      </view>
+      <view bindtap="result" wx:if="{{show}}">识别结果</view>
+      
+  </view>
+</view>

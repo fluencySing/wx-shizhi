@@ -1,0 +1,12 @@
+/* pages/info/info.wxss */
+.info{
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.plantimg image{
+  width: 100%;
+  border-radius: 20rpx;
+}
+.van-progress{
+  width: 400rpx;
+}

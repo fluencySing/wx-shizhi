@@ -1,0 +1,18 @@
+<!--pages/info/info.wxml-->
+<view class="info">
+  <view class="plantimg">
+    <image src="{{cloudImg}}" mode="widthFix"></image>
+  </view>
+  <view class="detail">
+    <view class="detailTxt" wx:for="{{detail}}" wx:key="index">
+      <text class="name">{{item.name}}</text>
+      相似度:<van-progress
+        percentage="{{item.score}}"
+        pivot-color="#7232dd"
+        color="linear-gradient(to right, #be99ff, #7232dd)"
+        show-pivot="false"
+      />
+      <view class="desc">{{item.desc}}</view>
+    </view>
+  </view>
+</view>
