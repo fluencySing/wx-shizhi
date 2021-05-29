@@ -1,0 +1,17 @@
+/* pages/func/func.wxss */
+.title{
+  color: #999;
+  font-size: 32rpx;
+  padding: 30rpx;
+}
+.item{
+  display: flex;
+  align-items: flex-end;
+}
+.item image{
+  width: 60rpx;
+  height: 60rpx;
+}
+.van-cell-text{
+  margin-left: 10rpx;
+}

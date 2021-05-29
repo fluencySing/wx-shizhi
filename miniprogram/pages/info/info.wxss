@@ -7,6 +7,48 @@
   width: 100%;
   border-radius: 20rpx;
 }
-.van-progress{
-  width: 400rpx;
+.detailTxt{
+  margin-top: 40rpx;
+}
+.title{
+  display: flex;
+  justify-content: space-between;
+}
+.per{
+  display: flex;
+  align-items: center;
+}
+.per text{
+  font-size: 30rpx;
+}
+.progress{
+  width: 200rpx;
+  background-color: #ddd;
+  height: 10rpx;
+
+}
+.score1{
+  background-color: rgb(245, 65, 65);
+}
+.score2{
+  background-color: rgb(250, 148, 81);
+}
+.score3{
+  background-color: rgb(250, 225, 81);
+}
+.txt1{
+  color: rgb(245, 65, 65);
+}
+.txt2{
+  color: rgb(253, 140, 65);
+}
+.txt3{
+  color: rgb(233, 199, 7);
+}
+.desc{
+  display: block;
+  padding: 20rpx;
+  font-size: 34rpx;
+  text-indent:75rpx;
+  letter-spacing: 5rpx;
 }

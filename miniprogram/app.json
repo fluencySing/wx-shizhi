@@ -14,7 +14,9 @@
     "pages/im/im",
     "pages/im/room/room",
     "pages/know/know",
-    "pages/info/info"
+    "pages/info/info",
+    "pages/func/func",
+    "pages/food/food"
   ],
   "window": {
     "backgroundColor": "#f6f6f6",

@@ -5,13 +5,15 @@
   </view>
   <view class="detail">
     <view class="detailTxt" wx:for="{{detail}}" wx:key="index">
-      <text class="name">{{item.name}}</text>
-      相似度:<van-progress
-        percentage="{{item.score}}"
-        pivot-color="#7232dd"
-        color="linear-gradient(to right, #be99ff, #7232dd)"
-        show-pivot="false"
-      />
+      <view class="title">
+        <text class="name">{{item.name}}</text>
+        <view class="per">
+          <view class="progress">
+            <view class="{{item.score>70?'score1':item.score>40?'score2':'score3'}}" style="width:{{item.score}}%;height:100%"></view>
+          </view>
+          <text class="{{item.score>70?'txt1':item.score>40?'txt2':'txt3'}}">{{item.score}}%</text>
+        </view>
+      </view>
       <view class="desc">{{item.desc}}</view>
     </view>
   </view>

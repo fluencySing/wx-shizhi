@@ -21,7 +21,21 @@ Page({
   },
   // 拍照获得图片
   take(){
-
+    wx.chooseImage({
+      count: 1,
+      sizeType:['original', 'compressed'],
+      sourceType: ['camera'],
+      success (res) {
+        // tempFilePath可以作为img标签的src属性显示图片
+        const tempFilePaths = res.tempFilePaths;
+        that.getB64ByUrl(tempFilePaths[0]);
+        that.setData({
+          img:tempFilePaths[0],
+          show:true
+        })
+        that.uploadImg()
+      }
+    })
   },
   // 从相册获得图片
   photo(){
@@ -38,9 +52,13 @@ Page({
           show:true
         })
         that.uploadImg()
+        wx.showToast({
+          title: '上传成功',
+          icon: 'success',
+          duration: 1000
+        })
       }
     })
-   
   },
   getB64ByUrl: function (url) {
     const FileSystemManager = wx.getFileSystemManager();
@@ -111,20 +129,17 @@ Page({
           url: '../info/info',
         })
         that.setData({
-          content: res.data.result,
-          show:true
+          content: res.data.result
         }); 
-        console.log(that.data.content);
         for(let i = 0; i<that.data.content.length; i++){
           db.collection('plantImg').add({
             data:{
               imgPath:that.data.cloudImg,
               name:that.data.content[i].name,
               score:(that.data.content[i].score*100).toFixed(2),
-              desc:that.data.content[i].baike_info.description
+              desc:JSON.stringify(that.data.content[i].baike_info)=='{}'?'暂无资料':that.data.content[i].baike_info.description
             }
           }).then(suc=>{
-            console.log(suc);
           })
         }
        
