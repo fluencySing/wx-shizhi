@@ -98,7 +98,7 @@ Page({
       console.log(err);
     })
   },
-  // 识别菜品获得token
+  // 识别动物物获得token
   getToken: function(callback) {
     wx.request({
       url: 'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=BcfPOq5GTc1lmGC9swGYQVHA&client_secret=398924bxbm8U8DcYgGdEj4mxOjBpKGGs',
@@ -112,10 +112,10 @@ Page({
       }
     });
   },
-  // 识别菜品结果
+  // 识别动物结果
   getResult: function(token) {
     wx.request({
-      url:'https://aip.baidubce.com/rest/2.0/image-classify/v2/dish?access_token=' + token, 
+      url:'https://aip.baidubce.com/rest/2.0/image-classify/v1/animal?access_token=' + token, 
       method: "post",
       data: {
         image: that.data.imgB64,
@@ -127,19 +127,18 @@ Page({
       },
       success(res) {
         wx.navigateTo({         // 跳转结果详情
-          url: '../info/info?type=foodImg',
+          url: '../info/info?type=animalImg',
         })
         that.setData({
           content: res.data.result
         }); 
         console.log(res.data);
         for(let i = 0; i<that.data.content.length; i++){
-          db.collection('foodImg').add({
+          db.collection('animalImg').add({
             data:{
               imgPath:that.data.cloudImg,
               name:that.data.content[i].name,
-              score:(that.data.content[i].probability*100).toFixed(2),
-              calorie:that.data.content[i].calorie,
+              score:(that.data.content[i].score*100).toFixed(2),
               desc:JSON.stringify(that.data.content[i].baike_info)=='{}'?'暂无资料':that.data.content[i].baike_info.description
             }
           }).then(suc=>{

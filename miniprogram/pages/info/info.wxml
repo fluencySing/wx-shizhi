@@ -14,6 +14,7 @@
           <text class="{{item.score>70?'txt1':item.score>40?'txt2':'txt3'}}">{{item.score}}%</text>
         </view>
       </view>
+      <view class="calorie" wx:if="{{type == 'foodImg'}}">卡路里:{{item.calorie}}</view>
       <view class="desc">{{item.desc}}</view>
     </view>
   </view>

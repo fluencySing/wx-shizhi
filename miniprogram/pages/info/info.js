@@ -8,7 +8,8 @@ Page({
    */
   data: {
     cloudImg:'',
-    datail:[]
+    datail:[],
+    type:''
   },
 
   /**
@@ -16,6 +17,9 @@ Page({
    */
   onLoad: function (options) {
     that = this
+    that.setData({
+      type:options.type
+    })
     wx.getStorage({
       key: 'cloudImg',
       success(res){
@@ -28,7 +32,7 @@ Page({
     
   },
   getData(){
-    db.collection('plantImg').where({
+    db.collection(that.data.type).where({
       imgPath:that.data.cloudImg
     }).get().then(res=>{
       let arr = res.data;

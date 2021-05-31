@@ -33,6 +33,18 @@
         {
           "name": "pages/func/func",
           "pathName": "pages/func/func",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/food/food",
+          "pathName": "pages/food/food",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/animal/animal",
+          "pathName": "pages/animal/animal",
           "scene": null
         }
       ]

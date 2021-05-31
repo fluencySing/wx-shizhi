@@ -1,8 +1,8 @@
-/* pages/food/food.wxss */
+/* pages/animal/animal.wxss */
 .container{
   width: 100%;
   height: 100vh;
-  background-color: #F6F6F6;
+  background-color: #fff;
 }
 .take{
   width: 350rpx;
@@ -11,23 +11,23 @@
   line-height: 80rpx;
   text-align: center;
   border-radius: 100rpx;
-  background-color: #00B26A;
+  background-color: #B3653F;
   color: #fff;
   margin-top: 100rpx;
 }
 .photo{
-  color: #00B26A;
+  color: #B3653F;
   margin-top: 50rpx;
   width: 350rpx;
   height: 80rpx;
-  border: 1px solid #00B26A;
+  border: 1px solid #B3653F;
   line-height: 80rpx;
   text-align: center;
   border-radius: 100rpx;
 }
 .result{
   font-size: 34rpx;
-  color:  #00B26A;
+  color:  #B3653F;
   margin-top: 40rpx;
 }
 .func{

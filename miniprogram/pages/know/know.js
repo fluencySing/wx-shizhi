@@ -126,7 +126,7 @@ Page({
       },
       success(res) {
         wx.navigateTo({         // 跳转结果详情
-          url: '../info/info',
+          url: '../info/info?type=plantImg',
         })
         that.setData({
           content: res.data.result

@@ -17,7 +17,7 @@
       <van-cell
       is-link
       link-type="navigateTo"
-      url="../know/know"
+      url="../food/food"
       >
       <view slot = "title" class="item">
         <image src="../../images/food.svg"></image>
@@ -28,7 +28,7 @@
       <van-cell
       is-link
       link-type="navigateTo"
-      url="../know/know"
+      url="../animal/animal"
       >
       <view slot = "title" class="item">
         <image src="../../images/lion.svg"></image>

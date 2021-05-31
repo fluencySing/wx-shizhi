@@ -1,8 +1,8 @@
-<!--pages/food/food.wxml-->
+<!--pages/animal/animal.wxml-->
 <view class="know">
   <view class="container">
-     <image src="https://img1.baidu.com/it/u=2407358589,2562671168&fm=26&fmt=auto&gp=0.jpg"></image>
-     <view class="take" bindtap="take">拍照识菜</view>
+     <image src="https://img-qn-5.51miz.com/preview/element/00/01/11/31/E-1113108-8808F800.jpg!/quality/90/unsharp/true/compress/true/format/jpg/fh/320"></image>
+     <view class="take" bindtap="take">拍照识动物</view>
      <view class="photo" bindtap="photo">
          上传图片
       </view>
