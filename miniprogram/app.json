@@ -4,7 +4,9 @@
     "pages/info/info",
     "pages/func/func",
     "pages/food/food",
-    "pages/animal/animal"
+    "pages/animal/animal",
+    "pages/his/his",
+    "pages/im/im"
   ],
   "window": {
     "backgroundColor": "#f6f6f6",

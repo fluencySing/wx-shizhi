@@ -1,12 +1,12 @@
 /* pages/func/func.wxss */
 .title{
   color: #999;
-  font-size: 32rpx;
-  padding: 30rpx;
+  font-size: 30rpx;
+  padding: 10rpx 20rpx;
 }
 .item{
   display: flex;
-  align-items: flex-end;
+  align-items: center;
 }
 .item image{
   width: 60rpx;
@@ -14,4 +14,22 @@
 }
 .van-cell-text{
   margin-left: 10rpx;
+}
+.user{
+  background-color: #fff;
+  padding:30rpx 20rpx;
+}
+.login{
+  display: flex;
+  align-items: center;
+}
+.state{
+  font-size: 30rpx;
+  color: #999;
+  padding-left: 40rpx;
+}
+.login image{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
 }

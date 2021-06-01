@@ -13,11 +13,11 @@
   border-radius: 100rpx;
   background-color: #00B26A;
   color: #fff;
-  margin-top: 100rpx;
+  margin-top: 200rpx;
 }
 .photo{
   color: #00B26A;
-  margin-top: 50rpx;
+  margin-top: 60rpx;
   width: 350rpx;
   height: 80rpx;
   border: 1px solid #00B26A;

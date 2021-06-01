@@ -9,9 +9,9 @@
         <text class="name">{{item.name}}</text>
         <view class="per">
           <view class="progress">
-            <view class="{{item.score>70?'score1':item.score>40?'score2':'score3'}}" style="width:{{item.score}}%;height:100%"></view>
+            <view class="{{item.num>70?'score1':item.num>40?'score2':'score3'}}" style="width:{{item.num}}%;height:100%"></view>
           </view>
-          <text class="{{item.score>70?'txt1':item.score>40?'txt2':'txt3'}}">{{item.score}}%</text>
+          <text class="{{item.num>70?'txt1':item.num>40?'txt2':'txt3'}}">{{item.num}}%</text>
         </view>
       </view>
       <view class="calorie" wx:if="{{type == 'foodImg'}}">卡路里:{{item.calorie}}</view>

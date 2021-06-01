@@ -137,10 +137,11 @@ Page({
           db.collection('foodImg').add({
             data:{
               imgPath:that.data.cloudImg,
-              name:that.data.content[i].name,
-              score:(that.data.content[i].probability*100).toFixed(2),
-              calorie:that.data.content[i].calorie,
-              desc:JSON.stringify(that.data.content[i].baike_info)=='{}'?'暂无资料':that.data.content[i].baike_info.description
+              content: res.data.result
+              // name:that.data.content[i].name,
+              // score:(that.data.content[i].probability*100).toFixed(2),
+              // calorie:that.data.content[i].calorie,
+              // desc:JSON.stringify(that.data.content[i].baike_info)=='{}'?'暂无资料':that.data.content[i].baike_info.description
             }
           }).then(suc=>{
           })

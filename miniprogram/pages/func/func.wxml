@@ -1,5 +1,17 @@
 <!--pages/func/func.wxml-->
 <view class="func">
+  <view class="user">
+    <view class="login">
+      <block wx:if="{{state}}">
+        <image src="{{avatarUrl}}"></image>
+        <view class="state">{{userName}}</view>
+      </block>
+      <block wx:else="">
+          <van-icon name="user-circle-o" color="#666" size="100rpx"/>
+        <view class="state" bindtap="getInfo">点击登录</view>
+      </block>
+    </view>
+  </view>
   <view class="know">
       <view class="title">识别功能</view>
       <!-- 识别植物 -->
@@ -36,5 +48,29 @@
       </view>
       </van-cell>
   </view>
-
+  <view class="history">
+    <view class="title">其他</view>
+    <!-- 历史查询 -->
+    <van-cell
+      is-link
+      link-type="navigateTo"
+      bind:click="his"
+      >
+      <view slot = "title" class="item">
+        <image src="../../images/his.svg"></image>
+        <text class="van-cell-text">历史查询</text>
+      </view>
+      <!-- 圈子 -->
+      </van-cell>
+      <van-cell
+      is-link
+      link-type="navigateTo"
+      bind:click="im"
+      >
+      <view slot = "title" class="item">
+        <image src="../../images/im.svg"></image>
+        <text class="van-cell-text">圈子</text>
+      </view>
+      </van-cell>
+  </view>
 </view>

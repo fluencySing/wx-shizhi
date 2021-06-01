@@ -13,17 +13,17 @@
   border-radius: 100rpx;
   background-color: #B3653F;
   color: #fff;
-  margin-top: 100rpx;
+  margin-top: 200rpx;
 }
 .photo{
   color: #B3653F;
-  margin-top: 50rpx;
+  margin-top: 60rpx;
   width: 350rpx;
   height: 80rpx;
   border: 1px solid #B3653F;
   line-height: 80rpx;
   text-align: center;
-  border-radius: 100rpx;
+  border-radius: 50rpx;
 }
 .result{
   font-size: 34rpx;

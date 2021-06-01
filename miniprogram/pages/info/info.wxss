@@ -48,7 +48,7 @@
 .desc{
   display: block;
   padding: 20rpx;
-  font-size: 34rpx;
+  font-size: 30rpx;
   text-indent:75rpx;
   letter-spacing: 5rpx;
 }

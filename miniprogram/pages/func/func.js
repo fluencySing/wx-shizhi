@@ -1,20 +1,114 @@
 // pages/func/func.js
+let db = wx.cloud.database();
+let that = '';
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-
+    id:'',
+    userName:'',
+    avatarUrl:'',
+    state:false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    that = this;
+    that.getLogin()
+    wx.checkSession({
+      success () {
+        //session_key 未过期，并且在本生命周期一直有效
+      },
+      fail () {
+        // session_key 已经失效，需要重新执行登录流程
+        that.getLogin() //重新登录
+      }
+    })
+    wx.getSetting({
+      success (res) {
+        console.log(res);
+        if(res.authSetting['scope.userInfo']){
+          db.collection('userInfo').where({
+            _openid:that.data.id
+          }).get().then(res1=> {
+            console.log(res1);
+            that.setData({
+              userName:res1.data[0].userName,
+              avatarUrl:res1.data[0].avatarUrl,
+              state:true
+            })
+          })
+        }else{
+          that.setData({
+            state:false
+          })
+        }
+      }
+    })
   },
-
+  his(){
+    if(that.data.state){
+      wx.navigateTo({
+       url: '../his/his?id='+that.data.id,
+     })
+   }else{
+     that.getUserProfile()
+   }
+  },
+  im(){
+    if(that.data.state){
+       wx.navigateTo({
+        url: '../im/im',
+      })
+    }else{
+      that.getUserProfile()
+    }
+  },
+  getLogin(){
+    wx.login({
+     success(res){
+       if(res.code){
+         wx.request({
+           url: 'https://api.weixin.qq.com/sns/jscode2session?appid=wxebb92b7d22557339&secret=d14cb53cfba1a75555bebe40a14873a8&js_code='+ res.code+'&grant_type=authorization_code',
+           success:function(res){
+             that.setData({
+               id:res.data.openid
+             })
+           },
+           fail:function(err){
+             console.log(err);
+           }
+         })
+       }
+     }
+    })
+  },
+  getInfo(){
+    that.getUserProfile()
+  },
+  getUserProfile(e){
+    wx.getUserProfile({
+      desc:'用户登录',
+      success:function(res){
+        console.log(res.userInfo);
+       db.collection('userInfo').add({ 
+         data:{
+           userName:res.userInfo.nickName,
+           avatarUrl:res.userInfo.avatarUrl
+         }
+        }).then(res => {
+          console.log(res);
+        })
+        that.onLoad()
+      },
+      fail:function(err){
+        console.log(err);
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

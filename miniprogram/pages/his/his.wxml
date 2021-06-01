@@ -1,0 +1,17 @@
+<!--pages/his/his.wxml-->
+<view class="his">
+  <view class="nav">
+    <view class="{{num == index?'nav-item active':'nav-item'}}" wx:for="{{nav}}" wx:key="index"  bindtap="getNum" data-num="{{index}}" data-type="{{item.type}}">
+      <text>{{item.name}}</text>
+    </view>
+  </view>
+  <view class="container">
+    <view class="imfo" wx:for="{{contents}}" wx:key="index">
+      <image src="{{item.imgPath}}"></image>
+      <view class="txt">
+        <text>{{item.content[0].name}}</text>
+        <text>相似度最高</text>
+      </view>
+    </view>
+  </view>
+</view>

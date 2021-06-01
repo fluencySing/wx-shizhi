@@ -45,6 +45,12 @@
         {
           "name": "pages/animal/animal",
           "pathName": "pages/animal/animal",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/his/his",
+          "pathName": "pages/his/his",
           "scene": null
         }
       ]

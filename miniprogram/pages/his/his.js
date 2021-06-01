@@ -1,4 +1,4 @@
-// pages/info/info.js
+// pages/his/his.js
 let db = wx.cloud.database()
 let that = ''
 Page({
@@ -7,9 +7,24 @@ Page({
    * 页面的初始数据
    */
   data: {
-    cloudImg:'',
-    datail:[],
-    type:''
+    nav:[
+      {
+        name:'植物',
+        type:'plantImg'
+      },
+      {
+        name:'菜品',
+        type:'foodImg',
+      },
+      {
+        name:'动物',
+        type:'animalImg'
+      }
+    ],
+    num:0,
+    type:'plantImg',
+    id:'',
+    contents:[]
   },
 
   /**
@@ -18,52 +33,33 @@ Page({
   onLoad: function (options) {
     that = this
     that.setData({
-      type:options.type
+      id:options.id
     })
-    wx.getStorage({
-      key: 'cloudImg',
-      success(res){
-        that.setData({
-          cloudImg:res.data
-        })
-        that.getData()
-      }
+    that.getData()
+  },
+  getNum(e){
+    console.log(e.currentTarget.dataset.num);
+    that.setData({
+      num : e.currentTarget.dataset.num,
+      type: e.currentTarget.dataset.type
     })
-    
   },
   getData(){
     db.collection(that.data.type).where({
-      imgPath:that.data.cloudImg
-    }).get().then(res=>{
-      let arr = res.data[0].content;
-     for(let i=0; i<arr.length; i++){
-       arr[i].num=(arr[i].score*100).toFixed(2)
-       if(JSON.stringify(arr[i].baike_info)=='{}'){
-        arr[i].desc='暂无资料'
-       }else{
-         arr[i].desc = arr[i].baike_info.description
-       }
-      for(let j=i+1; j<arr.length; j++){
-        if(Number(arr[i].score) < Number(arr[j].score)){
-          let t = arr[i]
-          arr[i] = arr[j]
-          arr[j] = t
-        }
-      }
-     }
-     console.log(arr);
-      that.setData({
-        detail:arr
-      })
-    }).catch(err=>{
-      console.log(err);
+        _openid:that.data.id
+    }).get().then(res => {
+      console.log(res);
+     that.setData({
+       contents:res.data
+     })
+     that.onLoad()
     })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
