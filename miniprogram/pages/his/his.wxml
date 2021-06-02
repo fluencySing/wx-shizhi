@@ -6,7 +6,7 @@
     </view>
   </view>
   <view class="container">
-    <view class="imfo" wx:for="{{contents}}" wx:key="index">
+    <view class="imfo" wx:for="{{contents}}" wx:key="index" bindtap="">
       <image src="{{item.imgPath}}"></image>
       <view class="txt">
         <text>{{item.content[0].name}}</text>

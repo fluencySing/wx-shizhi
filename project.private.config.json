@@ -51,6 +51,18 @@
         {
           "name": "pages/his/his",
           "pathName": "pages/his/his",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/im/im",
+          "pathName": "pages/im/im",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/sub/sub",
+          "pathName": "pages/sub/sub",
           "scene": null
         }
       ]

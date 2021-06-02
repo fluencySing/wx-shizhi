@@ -1,2 +1,11 @@
 <!--pages/im/im.wxml-->
-<text>pages/im/im.wxml</text>
+<view class="im">
+  <view class="list">
+    
+  </view>
+  <view class="sub">
+    <!-- <navigator url="../sub/sub"> -->
+      <text class="share" bindtap="jumpSub">分享生活</text>
+    <!-- </navigator> -->
+  </view>
+</view>

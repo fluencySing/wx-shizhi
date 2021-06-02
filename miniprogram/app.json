@@ -6,7 +6,8 @@
     "pages/food/food",
     "pages/animal/animal",
     "pages/his/his",
-    "pages/im/im"
+    "pages/im/im",
+    "pages/sub/sub"
   ],
   "window": {
     "backgroundColor": "#f6f6f6",

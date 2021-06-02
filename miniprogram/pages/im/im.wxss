@@ -1,1 +1,18 @@
 /* pages/im/im.wxss */
+.sub{
+  position: fixed;
+  bottom: 60rpx;
+  width: 100%;
+  z-index: 99;
+}
+.sub .share{
+  display: block;
+  margin: auto;
+  width: 300rpx;
+  height: 80rpx;
+  border-radius: 50rpx;
+  text-align: center;
+  background-color: #00B26A;
+  color: #fff;
+  line-height: 80rpx;
+}

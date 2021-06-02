@@ -24,3 +24,18 @@
   border-radius: 20rpx;
   height: 400rpx;
 }
+.txt{
+  padding: 20rpx 20rpx;
+  font-size: 32rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.txt text{
+  line-height: 50rpx;
+}
+.txt text:nth-child(2){
+  display: block;
+  font-size: 28rpx;
+  color: #666;
+}

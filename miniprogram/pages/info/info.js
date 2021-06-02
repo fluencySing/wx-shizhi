@@ -35,6 +35,7 @@ Page({
     db.collection(that.data.type).where({
       imgPath:that.data.cloudImg
     }).get().then(res=>{
+      console.log(res.data);
       let arr = res.data[0].content;
      for(let i=0; i<arr.length; i++){
        arr[i].num=(arr[i].score*100).toFixed(2)

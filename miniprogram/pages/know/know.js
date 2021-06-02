@@ -131,6 +131,7 @@ Page({
         that.setData({
           content: res.data.result
         }); 
+        console.log(res.data);
         // for(let i = 0; i<that.data.content.length; i++){
           db.collection('plantImg').add({
             data:{
@@ -141,6 +142,7 @@ Page({
               content: res.data.result
             }
           }).then(suc=>{
+            console.log(suc);
           })
         // }
       },

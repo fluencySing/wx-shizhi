@@ -1,0 +1,17 @@
+<!--pages/sub/sub.wxml-->
+<view class="sub">
+  <view class="com">
+    <textarea type="text" placeholder-class="plh" placeholder="美好的事情请记录下来~" 
+    bindinput="text"
+    />
+    <view class="tip">
+      <text>最多输入140字</text>
+    </view>
+    <view class="take">
+      <view bindtap="photo">+</view>
+    </view>
+    <view class="btn">
+      <text bindtap="sub">发布</text>
+    </view>
+  </view>
+</view>
