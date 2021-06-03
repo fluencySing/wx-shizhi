@@ -1,6 +1,6 @@
 {
+  "component": true,
   "usingComponents": {
-    "good":"../../components/good/good",
     "van-icon": "@vant/weapp/icon/index"
   }
 }

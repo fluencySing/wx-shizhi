@@ -9,7 +9,8 @@ Page({
     id:'',
     userName:'',
     avatarUrl:'',
-    state:false
+    state:false,
+    userInfo:null
   },
 
   /**
@@ -17,40 +18,23 @@ Page({
    */
   onLoad: function (options) {
     that = this;
-    that.getLogin()
-    wx.checkSession({
-      success () {
-        //session_key 未过期，并且在本生命周期一直有效
-      },
-      fail () {
-        // session_key 已经失效，需要重新执行登录流程
-        that.getLogin() //重新登录
-      }
-    })
-    wx.getSetting({
-      success (res) {
-        console.log(res);
-        if(res.authSetting['scope.userInfo']){
-          db.collection('userInfo').where({
-            _openid:that.data.id
-          }).get().then(res1=> {
-            console.log(res1);
-            that.setData({
-              userName:res1.data[0].userName,
-              avatarUrl:res1.data[0].avatarUrl,
-              state:true
-            })
-          })
-        }else{
-          that.setData({
-            state:false
-          })
-        }
-      }
-    })
+      wx.getStorage({
+        key: 'userName',
+      }).then( res => {
+        that.setData({
+          userName:res.data
+        })
+      })
+      wx.getStorage({
+        key: 'avatarUrl',
+      }).then( res => {
+        that.setData({
+          avatarUrl:res.data
+        })
+      })
   },
   his(){
-    if(that.data.state){
+    if(that.data.userName){
       wx.navigateTo({
        url: '../his/his?id='+that.data.id,
      })
@@ -59,9 +43,9 @@ Page({
    }
   },
   im(){
-    if(that.data.state){
+    if(that.data.userName){
        wx.navigateTo({
-        url: '../im/im',
+        url: '../im/im?id='+that.data.id,
       })
     }else{
       that.getUserProfile()
@@ -86,23 +70,41 @@ Page({
      }
     })
   },
-  getInfo(){
-    that.getUserProfile()
+  out(){
+    wx.clearStorage({
+      success: (res) => {
+        that.setData({
+          userName:'',
+          avatarUrl:''
+        })
+      },
+    })
   },
   getUserProfile(e){
     wx.getUserProfile({
       desc:'用户登录',
-      success:function(res){
-        console.log(res.userInfo);
-       db.collection('userInfo').add({ 
-         data:{
-           userName:res.userInfo.nickName,
-           avatarUrl:res.userInfo.avatarUrl
-         }
-        }).then(res => {
-          console.log(res);
+      success:function(res1){
+        console.log(res1.userInfo);
+        that.setData({
+          userInfo:res1.userInfo,
+          hasUserInfo: true
         })
-        that.onLoad()
+        wx.setStorage({
+          data: res1.userInfo.nickName,
+          key: 'userName',
+        })
+        wx.setStorage({
+          data: res1.userInfo.avatarUrl,
+          key: 'avatarUrl',
+        })
+        db.collection('userInfo').add({ 
+          data:{
+            userInfo:res1.userInfo,
+          }
+         }).then(res2 => {
+           console.log(res2);
+         })
+         that.onLoad()
       },
       fail:function(err){
         console.log(err);

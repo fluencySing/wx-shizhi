@@ -33,3 +33,9 @@
   height: 100rpx;
   border-radius: 50%;
 }
+.out{
+  font-size: 24rpx;
+  color: rgb(172, 0, 0);
+  position: absolute;
+  right: 40rpx;
+}

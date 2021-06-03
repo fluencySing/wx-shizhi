@@ -1,0 +1,6 @@
+<!--components/good/good.wxml-->
+<view class="good">
+  <van-icon wx:if="{{state1}}" name="like-o" bind:click="tap1"/>
+  <van-icon wx:if="{{state2}}" name="like" bind:click="tap2"/>
+  <slot></slot>
+</view>

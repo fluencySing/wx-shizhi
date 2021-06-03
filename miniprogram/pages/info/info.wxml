@@ -14,7 +14,7 @@
           <text class="{{item.num>70?'txt1':item.num>40?'txt2':'txt3'}}">{{item.num}}%</text>
         </view>
       </view>
-      <view class="calorie" wx:if="{{type == 'foodImg'}}">卡路里:{{item.calorie}}</view>
+      <view class="calorie" wx:if="{{item.type == 'foodImg'}}">卡路里:{{item.calorie}}</view>
       <view class="desc">{{item.desc}}</view>
     </view>
   </view>

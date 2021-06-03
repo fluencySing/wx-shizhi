@@ -16,3 +16,43 @@
   color: #fff;
   line-height: 80rpx;
 }
+.list {
+  width: 100%;
+  /* padding: 40rpx; */
+  /* display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; */
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.list-item{
+  float: left;
+  background-color: #fff;
+  border-radius: 10rpx;
+  width: 350rpx;
+  overflow: hidden;
+  margin: 20rpx 0 0 18rpx;
+}
+.list-item .txt{
+  font-size: 30rpx;
+  padding: 0 20rpx;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.user{
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+}
+.user image{
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 100rpx;
+}
+.user text{
+  color: #333;
+  font-size: 24rpx;
+  margin-left: 10rpx;
+}

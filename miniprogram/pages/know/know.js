@@ -125,24 +125,29 @@ Page({
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       success(res) {
-        wx.navigateTo({         // 跳转结果详情
-          url: '../info/info?type=plantImg',
-        })
         that.setData({
           content: res.data.result
         }); 
         console.log(res.data);
         // for(let i = 0; i<that.data.content.length; i++){
-          db.collection('plantImg').add({
+          db.collection('main').add({
             data:{
               imgPath:that.data.cloudImg,
               // name:that.data.content[i].name,
               // score:(that.data.content[i].score*100).toFixed(2),
               // desc:JSON.stringify(that.data.content[i].baike_info)=='{}'?'暂无资料':that.data.content[i].baike_info.description
-              content: res.data.result
+              content: res.data.result,
+              type:'plantImg'
             }
           }).then(suc=>{
-            console.log(suc);
+            db.collection('main').where({
+              imgPath:that.data.cloudImg
+            }).get().then(suc2=> {
+              console.log(suc2.data[0]._id);
+              wx.navigateTo({
+                url: '../info/info?id='+suc2.data[0]._id,
+              })
+            })
           })
         // }
       },

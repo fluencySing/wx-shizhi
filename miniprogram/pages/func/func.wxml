@@ -2,13 +2,14 @@
 <view class="func">
   <view class="user">
     <view class="login">
-      <block wx:if="{{state}}">
+      <block wx:if="{{userName}}">
         <image src="{{avatarUrl}}"></image>
         <view class="state">{{userName}}</view>
+        <view class="out" bindtap="out">退出</view>
       </block>
       <block wx:else="">
           <van-icon name="user-circle-o" color="#666" size="100rpx"/>
-        <view class="state" bindtap="getInfo">点击登录</view>
+        <view class="state" bindtap="getUserProfile">点击登录</view>
       </block>
     </view>
   </view>

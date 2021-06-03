@@ -1,0 +1,22 @@
+<!--pages/detail/detail.wxml-->
+<view class="detail">
+  <view class="detail-main">
+    <block wx:if="{{len>2}}">
+       <swiper indicator-dots="true">
+        <swiper-item wx:for="{{content.img}}" wx:key="index">
+          <image src="{{item}}" mode="aspectFit"  is-link bind:click="showPopup"></image>
+        </swiper-item>
+      </swiper>
+    </block>
+   <block wx:else>
+     <view class="simple-img">
+         <image src="{{content.img[0]}}"  mode="aspectFit"></image>
+     </view>
+   </block>
+    <view class="user">
+      <image src="{{content.avatarUrl}}"></image>
+      <text>{{content.userName}}</text>
+    </view>
+    <view class="txt">{{content.txt}}</view>
+  </view>
+</view>

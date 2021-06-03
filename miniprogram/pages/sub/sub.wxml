@@ -7,9 +7,12 @@
     <view class="tip">
       <text>最多输入140字</text>
     </view>
-    <view class="take">
-      <view bindtap="photo">+</view>
+    <view class="mainimg">
+       <view class="take"> 
+        <image wx:for="{{subImg}}" wx:key="index" src="{{item}}"></image>
+      </view>
     </view>
+    <view bindtap="photo" class="add" wx:if="{{subImg.length < 10}}">+</view>
     <view class="btn">
       <text bindtap="sub">发布</text>
     </view>

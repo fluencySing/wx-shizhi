@@ -9,7 +9,7 @@ Page({
   data: {
     cloudImg:'',
     datail:[],
-    type:''
+    id:''
   },
 
   /**
@@ -17,41 +17,61 @@ Page({
    */
   onLoad: function (options) {
     that = this
+    console.log(options.id);
     that.setData({
-      type:options.type
+      id:options.id
     })
-    wx.getStorage({
-      key: 'cloudImg',
-      success(res){
-        that.setData({
-          cloudImg:res.data
-        })
-        that.getData()
-      }
-    })
-    
+    that.getData()
+    // wx.getStorage({
+    //   key: 'cloudImg',
+    //   success(res){
+    //     that.setData({
+    //       cloudImg:res.data
+    //     })
+    //   }
+    // })
   },
   getData(){
-    db.collection(that.data.type).where({
-      imgPath:that.data.cloudImg
+    db.collection('main').where({
+      _id:that.data.id,
     }).get().then(res=>{
-      console.log(res.data);
+      that.setData({
+        cloudImg:res.data[0].imgPath
+      })
       let arr = res.data[0].content;
-     for(let i=0; i<arr.length; i++){
-       arr[i].num=(arr[i].score*100).toFixed(2)
-       if(JSON.stringify(arr[i].baike_info)=='{}'){
-        arr[i].desc='暂无资料'
-       }else{
-         arr[i].desc = arr[i].baike_info.description
-       }
-      for(let j=i+1; j<arr.length; j++){
-        if(Number(arr[i].score) < Number(arr[j].score)){
-          let t = arr[i]
-          arr[i] = arr[j]
-          arr[j] = t
+      if(res.data[0].type == 'foodImg'){
+        for(let i=0; i<arr.length; i++){
+          arr[i].num=(arr[i].probability*100).toFixed(2)
+          if(JSON.stringify(arr[i].baike_info)=='{}'){
+           arr[i].desc='暂无资料'
+          }else{
+            arr[i].desc = arr[i].baike_info.description
+          }
+         for(let j=i+1; j<arr.length; j++){
+           if(Number(arr[i].score) < Number(arr[j].score)){
+             let t = arr[i]
+             arr[i] = arr[j]
+             arr[j] = t
+           }
+         }
+        }
+      }else{
+        for(let i=0; i<arr.length; i++){
+          arr[i].num=(arr[i].score*100).toFixed(2)
+          if(JSON.stringify(arr[i].baike_info)=='{}'){
+           arr[i].desc='暂无资料'
+          }else{
+            arr[i].desc = arr[i].baike_info.description
+          }
+         for(let j=i+1; j<arr.length; j++){
+           if(Number(arr[i].score) < Number(arr[j].score)){
+             let t = arr[i]
+             arr[i] = arr[j]
+             arr[j] = t
+           }
+         }
         }
       }
-     }
      console.log(arr);
       that.setData({
         detail:arr

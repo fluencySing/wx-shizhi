@@ -1,11 +1,19 @@
 <!--pages/im/im.wxml-->
 <view class="im">
   <view class="list">
-    
+    <view class="list-item" wx:for="{{lists}}" wx:key="index">
+      <image src="{{item.img[0]}}"  bindtap="jumpDetail"  data-detailId="{{item._id}}"></image>
+      <view class="txt"  bindtap="jumpDetail"  data-detailId="{{item._id}}">{{item.txt}}</view>
+      <view class="user">
+        <image src="{{item.avatarUrl}}"></image>
+        <text>{{item.userName}}</text>
+        <good>
+          <text>{{item.good}}</text>
+        </good>
+      </view>
+    </view>
   </view>
   <view class="sub">
-    <!-- <navigator url="../sub/sub"> -->
       <text class="share" bindtap="jumpSub">分享生活</text>
-    <!-- </navigator> -->
   </view>
 </view>

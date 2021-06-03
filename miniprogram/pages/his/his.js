@@ -23,7 +23,6 @@ Page({
     ],
     num:0,
     type:'plantImg',
-    id:'',
     contents:[]
   },
 
@@ -38,21 +37,24 @@ Page({
     that.getData()
   },
   getNum(e){
-    console.log(e.currentTarget.dataset.num);
     that.setData({
       num : e.currentTarget.dataset.num,
       type: e.currentTarget.dataset.type
     })
+    that.getData()
   },
   getData(){
-    db.collection(that.data.type).where({
-        _openid:that.data.id
+    db.collection('main').where({
+        type:that.data.type
     }).get().then(res => {
-      console.log(res);
-     that.setData({
-       contents:res.data
-     })
-     that.onLoad()
+      that.setData({
+        contents:res.data
+      })
+    })
+  },
+  jump(e){
+    wx.navigateTo({
+      url: '../info/info?id='+e.currentTarget.dataset.id,
     })
   },
   /**

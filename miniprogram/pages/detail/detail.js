@@ -1,47 +1,41 @@
-// pages/im/im.js
+// pages/detail/detail.js
 var db = wx.cloud.database();
-var that='';
+var that = '';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    id:'',
-    lists:[],
-    state:false
+    content:{},
+    len:0,
+    show: false,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    that=this;
-    that.setData({
-      id:options.id
-    });
-    that.getList();
+    that = this;
+    console.log(options);
+    that.getDetail(options.detailid)
   },
-  jumpSub(){
-    wx.navigateTo({
-      url: '../sub/sub?id='+that.data.id,
-    })
-  },
-  jumpDetail(e){
-    console.log(e);
-    wx.navigateTo({
-      url: '../detail/detail?detailid='+e.currentTarget.dataset.detailid,
-    })
-  },
-  getList(){
-    db.collection('sub').get().then(res => {
+  getDetail(id){
+    db.collection('sub').where({
+      _id:id
+    }).get().then(res => {
+      console.log(res);
       that.setData({
-        lists:res.data
+        content:res.data[0],
+        len:res.data[0].img.length
       })
-      console.log(res.data);
-    }).catch(err => {
-      console.log(err);
     })
+  },
+  showPopup() {
+    this.setData({ show: true });
+  },
+  onClose() {
+    this.setData({ show: false });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

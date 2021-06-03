@@ -1,14 +1,16 @@
 // pages/sub/sub.js
-var db = wx.cloud.database;
+var db = wx.cloud.database();
 var that = '';
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    text:'',
-    subImg:[]
+    txt:'',
+    subImg:[],
+    len:0,
+    userName:'',
+    avatarUrl:''
   },
 
   /**
@@ -16,20 +18,28 @@ Page({
    */
   onLoad: function (options) {
     that = this
+    db.collection('userInfo').where({
+      _openid:options.id
+    }).get().then(res => {
+      that.setData({
+        userName:res.data[0].userInfo.nickName,
+        avatarUrl:res.data[0].userInfo.avatarUrl
+      })
+    })
   },
   text(e){
     that.setData({
-      text:e.detail.value
+      txt:e.detail.value
     })
   },
   //拍照/相册获取图片
   photo(){
+    var arr = []
+    var newArr = that.data.subImg
     wx.chooseMessageFile({
       count: 9,
       sourceType:['album','camera'],
       success(res1){
-        var len = res1.tempFiles.length - 1
-        console.log(res1.tempFiles.length);
         for(let i = 0; i < res1.tempFiles.length; i++){
           wx.cloud.uploadFile({       // 上传到云开发的存储中
            // 自定义随机命名图片 三元运算判断类型决定后缀
@@ -37,26 +47,32 @@ Page({
             ?new Date().getTime()+'.mp4': new Date().getTime()+'.png', 
             filePath:res1.tempFiles[i].path             // 相当于云存储中生成的云端数据
           }).then(res2 =>{
-           
-            // console.log(res2.fileID);
-            // arr = [...arr,res2.fileID]
-            var arr = [...that.data.subImg,res2.fileID]
-             if(i == 2){ 
-              // console.log(arr); 
-              console.log(arr);
-            }
-           
+            arr = [...arr,res2.fileID]
+            that.setData({
+              subImg:[...newArr,...arr]
+            })
           })
         } 
-        that.setData({
-              subImg:that.data.subImg
-          })
-        console.log(that.data.subImg);
       },
     })
   },
   // 发布保存到sub数据库
   sub(){
+    db.collection('sub').add({ 
+      data:{
+        userName:that.data.userName,
+        avatarUrl:that.data.avatarUrl,
+        txt:that.data.txt,
+        img:that.data.subImg
+      }
+    }).then(res => {
+      wx.showToast({
+        title: '发布成功',
+      })
+      wx.reLaunch({
+        url: '../im/im',
+      })
+    })
   },
 
   /**
