@@ -24,6 +24,7 @@
   justify-content: space-around; */
   overflow: hidden;
   box-sizing: border-box;
+  padding-bottom: 200rpx;
 }
 .list-item{
   float: left;
@@ -45,6 +46,7 @@
   display: flex;
   align-items: center;
   padding: 20rpx;
+  position: relative;
 }
 .user image{
   width: 50rpx;

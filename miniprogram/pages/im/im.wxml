@@ -7,8 +7,8 @@
       <view class="user">
         <image src="{{item.avatarUrl}}"></image>
         <text>{{item.userName}}</text>
-        <good>
-          <text>{{item.good}}</text>
+        <good item="{{item}}">
+          <!-- <text>{{item.good}}</text> -->
         </good>
       </view>
     </view>

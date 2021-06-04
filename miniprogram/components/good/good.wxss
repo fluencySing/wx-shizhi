@@ -1,1 +1,8 @@
 /* components/good/good.wxss */
+.good{
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 20rpx;
+  top: 30rpx;
+}

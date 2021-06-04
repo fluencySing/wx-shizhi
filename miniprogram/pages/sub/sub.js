@@ -42,7 +42,7 @@ Page({
       success(res1){
         for(let i = 0; i < res1.tempFiles.length; i++){
           wx.cloud.uploadFile({       // 上传到云开发的存储中
-           // 自定义随机命名图片 三元运算判断类型决定后缀
+            // 自定义随机命名图片 三元运算判断类型决定后缀
             cloudPath:res1.tempFiles[i].type=='file'?new Date().getTime()+'.doc':res1.tempFiles[i].type=='video'
             ?new Date().getTime()+'.mp4': new Date().getTime()+'.png', 
             filePath:res1.tempFiles[i].path             // 相当于云存储中生成的云端数据
@@ -58,21 +58,30 @@ Page({
   },
   // 发布保存到sub数据库
   sub(){
-    db.collection('sub').add({ 
-      data:{
-        userName:that.data.userName,
-        avatarUrl:that.data.avatarUrl,
-        txt:that.data.txt,
-        img:that.data.subImg
-      }
-    }).then(res => {
+    if(that.data.txt != '' && that.data.subImg.lenth>0){
+        db.collection('sub').add({ 
+        data:{
+          userName:that.data.userName,
+          avatarUrl:that.data.avatarUrl,
+          txt:that.data.txt,
+          img:that.data.subImg,
+          good:0,
+          state:true
+        }
+      }).then(res => {
+        wx.showToast({
+          title: '发布成功',
+        })
+        wx.reLaunch({
+          url: '../im/im',
+        })
+      })
+    }else{
       wx.showToast({
-        title: '发布成功',
+        icon:'none',
+        title: '内容不能为空',
       })
-      wx.reLaunch({
-        url: '../im/im',
-      })
-    })
+    }
   },
 
   /**

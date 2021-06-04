@@ -10,7 +10,7 @@
     </block>
    <block wx:else>
      <view class="simple-img">
-         <image src="{{content.img[0]}}"  mode="aspectFit"></image>
+         <image src="{{content.img[0]}}"></image>
      </view>
    </block>
     <view class="user">
@@ -18,5 +18,32 @@
       <text>{{content.userName}}</text>
     </view>
     <view class="txt">{{content.txt}}</view>
+    <view class="comment-main">
+      <text class="total">共{{content.comment.length}}条评论</text>
+      <view class="comment-item">
+        <image src="https://thirdwx.qlogo.cn/mmopen/vi_32/BGEHKsOMXOwlFvfLImuB55kueD2e9IbpF2dwyM0KJ7pDVuL4xxpvL2H1Q0K2J06fmtoHytyWaCDZhnxRzPbQnw/132"></image>
+        <view class="right">
+          <view class="name">hhhhhhh</view>
+          <view class="right-txt">haohaokan</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="fun">
+    <view class="ipt">
+      <input type="text" placeholder="此刻的想法..." bindinput="getVal" />
+      <image src="../../images/send.svg" bindtap="send"></image>
+    </view>
+    <view class="more">
+       <view class="good">
+        <van-icon wx:if="{{state}}" name="like-o" size="20px" bind:click="tap1"/>
+        <van-icon wx:else name="like" size="20px" bind:click="tap2" color="red"/>
+        <text>{{num}}</text> 
+       </view>
+       <view class="comment">
+        <van-icon name="chat-o" size="20px"/>
+        <text>{{content.comment.length}}</text> 
+       </view>
+    </view>
   </view>
 </view>

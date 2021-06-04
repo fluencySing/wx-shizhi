@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    id:'',
+    openid:'',
     lists:[],
     state:false
   },
@@ -17,14 +17,19 @@ Page({
    */
   onLoad: function (options) {
     that=this;
-    that.setData({
-      id:options.id
-    });
-    that.getList();
+    this.getList();
+    wx.getStorage({
+      key: 'openid',
+    }).then(res =>{
+      that.setData({
+        openid:res.data
+      })
+    })
+    
   },
   jumpSub(){
     wx.navigateTo({
-      url: '../sub/sub?id='+that.data.id,
+      url: '../sub/sub?id='+that.data.openid,
     })
   },
   jumpDetail(e){
@@ -75,7 +80,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    that.onLoad()
   },
 
   /**
@@ -89,6 +94,6 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    
   }
 })

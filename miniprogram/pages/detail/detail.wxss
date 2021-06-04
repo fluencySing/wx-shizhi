@@ -36,3 +36,86 @@ swiper image{
 .txt{
   padding: 0 30rpx;
 }
+.fun{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-top: 1px solid #eee;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+.fun input{
+  width: 400rpx;
+  background-color: #eee;
+  font-size: 28rpx;
+  border-radius: 100rpx;
+  padding: 10rpx 70rpx 10rpx 50rpx;
+}
+.ipt{
+  position: relative;
+}
+.fun image{
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  right: 20rpx;
+  top: 15rpx;
+}
+.more{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: 20rpx;
+}
+.more text{
+  color: #333;
+  font-size: 30rpx;
+  margin-left: 10rpx;
+}
+.good{
+  display: flex;
+  align-items: center;
+}
+.comment{
+  display: flex;
+  align-items: center;
+}
+.comment-main{
+  padding: 0 30rpx;
+  margin-top: 60rpx;
+}
+.total{
+  border-top: 1px solid #eee;
+  width: 100%;
+  font-size: 26rpx;
+  color: #666;
+  padding:30rpx 0;
+  display: block;
+  box-sizing: border-box;
+}
+.comment-item{
+  display: flex;
+}
+.comment-item image{
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 100rpx;
+}
+.comment-item .right{
+  flex: 1;
+  padding: 0 20rpx 30rpx;
+  border-bottom: 1px solid #eee;
+}
+.comment-item .right .name{
+  color: #999;
+  font-size: 26rpx;
+}
+.comment-item .right-txt{
+  font-size: 26rpx;
+  line-height: 50rpx;
+}

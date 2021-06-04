@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    id:'',
+    openid:'',
     userName:'',
     avatarUrl:'',
     state:false,
@@ -18,6 +18,7 @@ Page({
    */
   onLoad: function (options) {
     that = this;
+    that.getLogin()
       wx.getStorage({
         key: 'userName',
       }).then( res => {
@@ -59,7 +60,7 @@ Page({
            url: 'https://api.weixin.qq.com/sns/jscode2session?appid=wxebb92b7d22557339&secret=d14cb53cfba1a75555bebe40a14873a8&js_code='+ res.code+'&grant_type=authorization_code',
            success:function(res){
              that.setData({
-               id:res.data.openid
+               openid:res.data.openid
              })
            },
            fail:function(err){
@@ -84,7 +85,6 @@ Page({
     wx.getUserProfile({
       desc:'用户登录',
       success:function(res1){
-        console.log(res1.userInfo);
         that.setData({
           userInfo:res1.userInfo,
           hasUserInfo: true
@@ -96,6 +96,10 @@ Page({
         wx.setStorage({
           data: res1.userInfo.avatarUrl,
           key: 'avatarUrl',
+        })
+        wx.setStorage({
+          data: that.data.openid,
+          key: 'openid',
         })
         db.collection('userInfo').add({ 
           data:{
