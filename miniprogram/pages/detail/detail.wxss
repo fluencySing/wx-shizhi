@@ -100,6 +100,7 @@ swiper image{
 }
 .comment-item{
   display: flex;
+  margin-top: 20rpx;
 }
 .comment-item image{
   width: 50rpx;
@@ -118,4 +119,32 @@ swiper image{
 .comment-item .right-txt{
   font-size: 26rpx;
   line-height: 50rpx;
+}
+.comment-none{
+  width: 100%;
+
+}
+.none{
+  text-align: center;
+  font-size: 25rpx;
+  color: #999;
+  position: relative;
+}
+.none::before{
+  content: '';
+  position: absolute;
+  left: 25%;
+  top: 50%;
+  height: 2rpx;
+  background-color: #999;
+  width: 90rpx;
+}
+.none::after{
+  content: '';
+  position: absolute;
+  right: 25%;
+  top: 50%;
+  height: 2rpx;
+  background-color: #999;
+  width: 90rpx;
 }

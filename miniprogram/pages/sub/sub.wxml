@@ -1,5 +1,10 @@
 <!--pages/sub/sub.wxml-->
 <view class="sub">
+  <van-notice-bar
+  left-icon="volume-o"
+  speed="40"
+  text="暂未开放发布视频，敬请期待"
+/>
   <view class="com">
     <textarea type="text" placeholder-class="plh" placeholder="美好的事情请记录下来~" 
     bindinput="text"

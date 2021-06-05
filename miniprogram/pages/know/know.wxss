@@ -28,10 +28,10 @@
 .result{
   font-size: 34rpx;
   color: #865c84;
-  margin-top: 40rpx;
+  margin-top: 50rpx;
 }
 .func{
   font-size: 34rpx;
   color: #666;
-  margin-top: 30rpx;
+  margin-top: 50rpx;
 }

@@ -16,7 +16,8 @@ Page({
     userInfo:{},
     val:'',
     comment:[],
-    commentItem:{}
+    commentItem:{},
+    detailid:''
   },
 
   /**
@@ -28,7 +29,8 @@ Page({
       key: 'openid',
     }).then(res => {
       that.setData({
-        openid:res.data
+        openid:res.data,
+        detailid:options.detailid
       })
     })
     that.getDetail(options.detailid)
@@ -42,7 +44,8 @@ Page({
         content:res.data[0],
         len:res.data[0].img.length,
         num:res.data[0].good,
-        state:res.data[0].state
+        state:res.data[0].state,
+        comment:res.data[0].comment
       })
     })
   },
@@ -90,36 +93,35 @@ Page({
     db.collection('userInfo').where({
       _openid:that.data.openid
     }).get().then(res=>{
-      console.log(res.data[0]);
       that.setData({
         userInfo:res.data[0]
       })
     })
+    
   },
   getVal(e){
     that.setData({
       val:e.detail.value
     })
+    
   },
   // 发送评论
   send(){
     that.data.commentItem.user = that.data.userInfo
     that.data.commentItem.val = that.data.val
     that.setData({
-      commentItem:that.data.commentItem
+      comment:[JSON.parse(JSON.stringify(that.data.commentItem)),...that.data.comment],
+      val:''
     })
-    that.data.comment = [...that.data.comment,that.data.commentItem]
-    that.setData({
-      comment:that.data.comment
+    db.collection('sub').where({
+      _id:that.data.detailid
+    }).update({
+      data:{
+        comment:that.data.comment
+      }
+    }).then(res => {
+      that.getDetail(that.data.detailid)
     })
-    console.log(that.data.comment);
-    // db.collection('sub').where({
-    //   _id:that.data.detailid
-    // }).update({
-    //   data:{
-    //     comment:
-    //   }
-    // })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

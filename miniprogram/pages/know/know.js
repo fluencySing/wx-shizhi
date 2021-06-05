@@ -81,6 +81,9 @@ Page({
       data: that.data.cloudImg,
       key: 'cloudImg',
     })
+    wx.navigateTo({
+      url: '../info/info?id='+suc2.data[0]._id,
+    })
     that.getToken(function(token) {
       that.getResult(token);
     });
@@ -143,10 +146,7 @@ Page({
             db.collection('main').where({
               imgPath:that.data.cloudImg
             }).get().then(suc2=> {
-              console.log(suc2.data[0]._id);
-              wx.navigateTo({
-                url: '../info/info?id='+suc2.data[0]._id,
-              })
+             
             })
           })
         // }

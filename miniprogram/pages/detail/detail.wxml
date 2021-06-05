@@ -10,7 +10,7 @@
     </block>
    <block wx:else>
      <view class="simple-img">
-         <image src="{{content.img[0]}}"></image>
+         <image src="{{content.img[0]}}" mode="widthFix"></image>
      </view>
    </block>
     <view class="user">
@@ -19,19 +19,26 @@
     </view>
     <view class="txt">{{content.txt}}</view>
     <view class="comment-main">
-      <text class="total">共{{content.comment.length}}条评论</text>
-      <view class="comment-item">
-        <image src="https://thirdwx.qlogo.cn/mmopen/vi_32/BGEHKsOMXOwlFvfLImuB55kueD2e9IbpF2dwyM0KJ7pDVuL4xxpvL2H1Q0K2J06fmtoHytyWaCDZhnxRzPbQnw/132"></image>
-        <view class="right">
-          <view class="name">hhhhhhh</view>
-          <view class="right-txt">haohaokan</view>
+      <block wx:if="{{content.comment.length > 0}}">
+        <text class="total">共{{content.comment.length}}条评论</text>
+        <view class="comment-item" wx:for="{{content.comment}}" wx:key="index">
+          <image src="{{item.user.userInfo.avatarUrl}}"></image>
+          <view class="right">
+            <view class="name">{{item.user.userInfo.nickName}}</view>
+            <view class="right-txt">{{item.val}}</view>
+          </view>
         </view>
-      </view>
+      </block>
+      <block wx:else>
+        <view class="comment-none">
+          <view class="none">暂无评论</view>
+        </view>
+      </block>
     </view>
   </view>
   <view class="fun">
     <view class="ipt">
-      <input type="text" placeholder="此刻的想法..." bindinput="getVal" />
+      <input type="text" value="{{val}}" placeholder="此刻的想法..." bindinput="getVal" />
       <image src="../../images/send.svg" bindtap="send"></image>
     </view>
     <view class="more">

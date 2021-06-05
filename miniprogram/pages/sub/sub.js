@@ -58,7 +58,7 @@ Page({
   },
   // 发布保存到sub数据库
   sub(){
-    if(that.data.txt != '' && that.data.subImg.lenth>0){
+    if(that.data.subImg.length>0){
         db.collection('sub').add({ 
         data:{
           userName:that.data.userName,
@@ -66,7 +66,8 @@ Page({
           txt:that.data.txt,
           img:that.data.subImg,
           good:0,
-          state:true
+          state:true,
+          comment:[]
         }
       }).then(res => {
         wx.showToast({
