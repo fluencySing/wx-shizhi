@@ -61,9 +61,9 @@
         <image src="../../images/his.svg"></image>
         <text class="van-cell-text">历史查询</text>
       </view>
+      </van-cell> 
       <!-- 圈子 -->
-      </van-cell>
-      <van-cell
+      <!-- <van-cell
       is-link
       link-type="navigateTo"
       bind:click="im"
@@ -72,6 +72,6 @@
         <image src="../../images/im.svg"></image>
         <text class="van-cell-text">圈子</text>
       </view>
-      </van-cell>
+      </van-cell> -->
   </view>
 </view>

@@ -101,13 +101,33 @@ Page({
           data: that.data.openid,
           key: 'openid',
         })
-        db.collection('userInfo').add({ 
-          data:{
-            userInfo:res1.userInfo,
+        db.collection('userInfo').get().then(res2 => {
+          if(res2.data.length>0){
+              for(var i=0; i<res2.data.length;i++){
+              if(res2.data[i]._openid != that.data.openid){
+                  db.collection('userInfo').add({ 
+                    data:{
+                      userInfo:res1.userInfo,
+                    }
+                  }).then(res2 => {
+                    console.log(res2);
+                  })
+              }
+            }
+          }else{
+            db.collection('userInfo').add({ 
+              data:{
+                userInfo:res1.userInfo,
+              }
+            }).then(res2 => {
+              console.log(res2);
+            })
           }
-         }).then(res2 => {
-           console.log(res2);
-         })
+        
+        }).catch(err => {
+          console.log(err);
+        })
+      
          that.onLoad()
       },
       fail:function(err){
