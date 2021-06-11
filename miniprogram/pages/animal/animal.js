@@ -11,7 +11,8 @@ Page({
     imgB64:'',
     content:[],
     show:false,
-    cloudImg:''
+    cloudImg:'',
+    load:false
   },
   /**
    * 生命周期函数--监听页面加载
@@ -81,6 +82,9 @@ Page({
       data: that.data.cloudImg,
       key: 'cloudImg',
     })
+    that.setData({
+      load:true
+    })
     that.getToken(function(token) {
       that.getResult(token);
     });
@@ -129,28 +133,24 @@ Page({
         that.setData({
           content: res.data.result
         }); 
-        console.log(res.data);
-        // for(let i = 0; i<that.data.content.length; i++){
           db.collection('main').add({
             data:{
               imgPath:that.data.cloudImg,
               content: res.data.result,
               type:'animalImg'
-              // name:that.data.content[i].name,
-              // score:(that.data.content[i].score*100).toFixed(2),
-              // desc:JSON.stringify(that.data.content[i].baike_info)=='{}'?'暂无资料':that.data.content[i].baike_info.description
             }
           }).then(suc=>{
             db.collection('main').where({
               imgPath:that.data.cloudImg
             }).get().then(suc2=> {
-              console.log(suc2.data[0]._id);
+              that.setData({
+                load:false
+              })
               wx.navigateTo({
                 url: '../info/info?id='+suc2.data[0]._id,
               })
             })
           })
-        // }
       },
       fail(err){
         console.log(err);

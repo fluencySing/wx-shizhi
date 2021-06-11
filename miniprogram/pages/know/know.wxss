@@ -35,3 +35,11 @@
   color: #666;
   margin-top: 50rpx;
 }
+.van-loading{
+  position: absolute;
+  top: -10%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}

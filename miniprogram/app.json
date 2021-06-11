@@ -7,8 +7,8 @@
     "pages/animal/animal",
     "pages/his/his",
     "pages/im/im",
-    "pages/sub/sub",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/sub/sub"
   ],
   "window": {
     "backgroundColor": "#f6f6f6",

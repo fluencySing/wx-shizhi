@@ -12,5 +12,6 @@
           更多功能 >>
         </navigator>
       </view>
+      <van-loading wx:if="{{load}}" type="spinner" color="#999"  />
   </view>
 </view>

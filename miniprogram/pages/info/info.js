@@ -17,19 +17,10 @@ Page({
    */
   onLoad: function (options) {
     that = this
-    console.log(options.id);
     that.setData({
       id:options.id
     })
     that.getData()
-    // wx.getStorage({
-    //   key: 'cloudImg',
-    //   success(res){
-    //     that.setData({
-    //       cloudImg:res.data
-    //     })
-    //   }
-    // })
   },
   getData(){
     db.collection('main').where({
@@ -72,7 +63,6 @@ Page({
          }
         }
       }
-     console.log(arr);
       that.setData({
         detail:arr
       })
