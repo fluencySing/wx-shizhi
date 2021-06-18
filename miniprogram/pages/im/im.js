@@ -17,7 +17,6 @@ Page({
    */
   onLoad: function (options) {
     that=this;
-    this.getList();
     wx.getStorage({
       key: 'openid',
     }).then(res =>{
@@ -25,7 +24,17 @@ Page({
         openid:res.data
       })
     })
-    
+  },
+  
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    that.setData({
+      lists:[]
+    })
+    this.getList();
+   
   },
   jumpSub(){
     wx.navigateTo({
@@ -33,7 +42,6 @@ Page({
     })
   },
   jumpDetail(e){
-    console.log(e);
     wx.navigateTo({
       url: '../detail/detail?detailid='+e.currentTarget.dataset.detailid,
     })
@@ -54,12 +62,6 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
 
   /**
    * 生命周期函数--监听页面隐藏
@@ -79,7 +81,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    that.onLoad()
+    that.onShow()
   },
 
   /**

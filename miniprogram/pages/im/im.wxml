@@ -14,6 +14,6 @@
     </view>
   </view>
   <view class="sub">
-      <text class="share" bindtap="jumpSub">分享生活</text>
+      <text class="share" bindtap="jumpSub">biubiu~~</text>
   </view>
 </view>

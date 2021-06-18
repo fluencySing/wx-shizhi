@@ -19,7 +19,7 @@
     </view>
     <view bindtap="photo" class="add" wx:if="{{subImg.length < 10}}">+</view>
     <view class="btn">
-      <text bindtap="sub">发布</text>
+      <text bindtap="sub">上传</text>
     </view>
   </view>
 </view>
